@@ -26,7 +26,7 @@ class News {
   String url;
   String? urlToImage;
   DateTime publishedAt;
-  String content;
+  String? content;
 
   factory News.fromJson(Map<String, dynamic> json) => News(
         source: Source.fromJson(json["source"]),
@@ -36,7 +36,7 @@ class News {
         url: json["url"] as String,
         urlToImage: json["urlToImage"],
         publishedAt: DateTime.parse(json["publishedAt"] as String),
-        content: json["content"] as String,
+        content: json["content"],
       );
 
   Map<String, dynamic> toJson() => {
