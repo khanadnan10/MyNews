@@ -100,6 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       TextField(
                         onTap: () => snackbar(context, 'Yet to work upon...'),
+                        autofocus: false,
                         decoration: InputDecoration(
                           fillColor: Colors.grey.shade200,
                           filled: true,
@@ -162,49 +163,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Image(
-                                  height: screenSize.height * 0.13,
-                                  width: screenSize.width * 0.3,
-                                  fit: BoxFit.cover,
-                                  color: Colors.grey.shade50,
-                                  // loadingBuilder:
-                                  //     (context, child, loadingProgress) {
-                                  //   return SizedBox(
-                                  //     height: screenSize.height * 0.13,
-                                  //     width: screenSize.width * 0.3,
-                                  //     child: Center(
-                                  //       child: CircularProgressIndicator(
-                                  //         value: loadingProgress
-                                  //                     ?.expectedTotalBytes !=
-                                  //                 null
-                                  //             ? loadingProgress!
-                                  //                     .cumulativeBytesLoaded /
-                                  //                 loadingProgress
-                                  //                     .expectedTotalBytes!
-                                  //             : null,
-                                  //       ),
-                                  //     ),
-                                  //   );
-                                  // },
-                                  errorBuilder: (BuildContext context,
-                                      Object exception,
-                                      StackTrace? stackTrace) {
-                                    return Card(
-                                      elevation: 0,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                              12.0)),
-                                      child: const SizedBox(
-                                        height: 200,
-                                        width: double.infinity,
-                                        child:
-                                            Icon(Icons.broken_image_outlined),
-                                      ),
-                                    );
-                                  },
-                                  image: NetworkImage(news!.urlToImage != null
-                                      ? news.urlToImage.toString()
-                                      : 'https://picsum.photos/200/300'),
-                                ),
+                                    height: screenSize.height * 0.1,
+                                    width: screenSize.width * 0.2,
+                                    fit: BoxFit.cover,
+                                    image: news!.urlToImage != null
+                                        ? NetworkImage(
+                                            news!.urlToImage.toString())
+                                        : const AssetImage('images/browser.png')
+                                            as ImageProvider),
                               ),
                               const SizedBox(
                                 width: 5.0,
@@ -213,8 +179,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    news.title.toString(),
+                                    news!.title.toString(),
                                     maxLines: 3,
+                                    softWrap: true,
                                     style: const TextStyle(
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.w600,
